@@ -129,7 +129,6 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 );
                               }
-                              ;
                               Globals.allNumber.add(Number);
                               Number["n1"] = (Number["number"] * 1);
                               Number["n2"] = (Number["number"] * 2);
@@ -154,60 +153,46 @@ class _HomePageState extends State<HomePage> {
                 Visibility(
                   visible: Number["number"] != 0,
                   child: Container(
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                          color: Color(0xff6A00AA),
-                          spreadRadius: 10,
-                          blurRadius: 10,
-                          blurStyle: BlurStyle.outer,
-                          offset: Offset(8, 8))
-                    ]),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Text(
-                            "${Number["number"]}\t\t*\t\t1\t\t=\t\t${Number["n1"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "${Number["number"]}\t\t*\t\t2\t\t=\t\t${Number["n2"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "${Number["number"]}\t\t*\t\t3\t\t=\t\t${Number["n3"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "${Number["number"]}\t\t*\t\t4\t\t=\t\t${Number["n4"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "  ${Number["number"]}\t\t*\t\t5\t\t=\t\t${Number["n5"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "  ${Number["number"]}\t\t*\t\t6\t\t=\t\t${Number["n6"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "  ${Number["number"]}\t\t*\t\t7\t\t=\t\t${Number["n7"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "  ${Number["number"]}\t\t*\t\t8\t\t=\t\t${Number["n8"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "  ${Number["number"]}\t\t*\t\t9\t\t=\t\t${Number["n9"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          Text(
-                            "  ${Number["number"]}\t\t*\t\t10\t\t=\t\t${Number["n10"]}",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        ],
+                    height: 450,
+                    padding: EdgeInsets.all(40),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                            "https://i.pinimg.com/564x/7a/b5/53/7ab553df4f8c1b1dc1508cfd394b64ca.jpg"),
                       ),
                     ),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          10,
+                          (index) => Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "${Number["number"]}",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "${index + 1}",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                "${Number["n${index + 1}"]}",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )),
                   ),
                 ),
                 Spacer(),
