@@ -18,7 +18,7 @@ class _PDFState extends State<PDF> {
     pw.Document pdf = pw.Document();
 
     var image = await networkImage(
-        "https://i.pinimg.com/564x/b2/30/d1/b230d19d4d73f6c68cc728f132ed5ebe.jpg");
+        "https://i.pinimg.com/736x/dc/5b/79/dc5b796615caeb36735ce8c197da3eed.jpg");
 
     pdf.addPage(
       pw.Page(
@@ -30,29 +30,39 @@ class _PDFState extends State<PDF> {
                 image,
                 fit: pw.BoxFit.cover,
               ),
-              pw.Column(
-                  mainAxisAlignment: pw.MainAxisAlignment.start,
-                  children: [
-                    pw.Container(
-                      padding: pw.EdgeInsets.only(top: 150),
+              pw.Column(children: [
+                pw.Container(
+                  margin: pw.EdgeInsets.only(top: 90),
+                  height: 50,
+                  child: pw.Text(
+                    "Multiplication History",
+                    style: pw.TextStyle(
+                      fontSize: 40,
+                      fontWeight: pw.FontWeight.bold,
+                      // color: PdfColor.fromInt(0xff6A00AA),
                     ),
-                    pw.Column(
-                      children: List.generate(
-                          Globals.allNumber.length,
-                          (index) => pw.Center(
-                                child: pw.Container(
-                                  padding: pw.EdgeInsets.all(10),
-                                  width: double.infinity,
-                                  child: pw.Text(
-                                    "Value ${index + 1} is : ${Globals.allNumber[index]["number"]}",
-                                    style: pw.TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: pw.FontWeight.bold),
-                                  ),
-                                ),
-                              )).toList(),
-                    )
-                  ])
+                  ),
+                ),
+                pw.Divider(
+                    indent: 40,
+                    endIndent: 42,
+                    color: PdfColor.fromInt(0xff6A00AA)),
+                pw.Column(
+                  children: List.generate(
+                    Globals.allNumber.length,
+                    (index) => pw.Container(
+                      padding: pw.EdgeInsets.only(left: 60, top: 5),
+                      alignment: pw.Alignment.topLeft,
+                      width: double.infinity,
+                      child: pw.Text(
+                        "Value ${index + 1} is : ${Globals.allNumber[index]}",
+                        style: pw.TextStyle(
+                            fontSize: 20, fontWeight: pw.FontWeight.bold),
+                      ),
+                    ),
+                  ).toList(),
+                )
+              ])
             ],
           ),
         ),

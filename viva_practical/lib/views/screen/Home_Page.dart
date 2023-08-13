@@ -12,19 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  Map Number = {
-    "number": 0,
-    "n1": 0,
-    "n2": 0,
-    "n3": 0,
-    "n4": 0,
-    "n5": 0,
-    "n6": 0,
-    "n7": 0,
-    "n8": 0,
-    "n9": 0,
-    "n10": 0,
-  };
+  int Number = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   onSaved: (val) {
                     setState(() {
-                      Number["number"] = int.parse(val!);
+                      Number = int.parse(val!);
                     });
                   },
                 ),
@@ -130,16 +118,6 @@ class _HomePageState extends State<HomePage> {
                                 );
                               }
                               Globals.allNumber.add(Number);
-                              Number["n1"] = (Number["number"] * 1);
-                              Number["n2"] = (Number["number"] * 2);
-                              Number["n3"] = (Number["number"] * 3);
-                              Number["n4"] = (Number["number"] * 4);
-                              Number["n5"] = (Number["number"] * 5);
-                              Number["n6"] = (Number["number"] * 6);
-                              Number["n7"] = (Number["number"] * 7);
-                              Number["n8"] = (Number["number"] * 8);
-                              Number["n9"] = (Number["number"] * 9);
-                              Number["n10"] = (Number["number"] * 10);
                             },
                           );
                         },
@@ -151,7 +129,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Spacer(),
                 Visibility(
-                  visible: Number["number"] != 0,
+                  visible: Number != 0,
                   child: Container(
                     height: 450,
                     padding: EdgeInsets.all(40),
@@ -169,13 +147,17 @@ class _HomePageState extends State<HomePage> {
                           (index) => Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
+                              SizedBox(
+                                width: 30,
+                              ),
                               Text(
-                                "${Number["number"]}",
+                                "${Number}",
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              Spacer(),
                               Text(
                                 "${index + 1}",
                                 style: TextStyle(
@@ -183,12 +165,16 @@ class _HomePageState extends State<HomePage> {
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
+                              Spacer(),
                               Text(
-                                "${Number["n${index + 1}"]}",
+                                "${Number * (index + 1)}",
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
                                 ),
+                              ),
+                              SizedBox(
+                                width: 30,
                               ),
                             ],
                           ),
